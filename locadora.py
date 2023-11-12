@@ -28,14 +28,39 @@ while True:
     op = int(input())
 
     os.system("clear")
-    if op == 0:
-        pass
+    if op == 0: 
+        mostrar_lista_de_carros(carros)
+        
+    elif op == 1: 
+        mostrar_lista_de_carros(carros) 
+        print("=========") 
+        print("Escolha o código do carro:") 
+        cod_car = int(input()) 
+        print("Por quantos dias você deseja alugar esse carro?") 
+        dias = int(input()) 
+        os.system("clear") 
 
-    elif op == 1:
-        pass
-
-    elif op == 2:
-        pass
+        print("Você escolheu {} por {} dias.".format(carros[cod_car][0], dias))
+        print("O aluguel totalizaria R$ {}. Deseja alugar?".format(dias * carros[cod_car][1]))
+           
+        print("0 - SIM | 1 - NÃO")
+        conf = int(input())
+        if conf == 0:
+            print("Você alugou o {} por {} dias.".format(carros[cod_car][0], dias))
+            alugados.append(carros.pop(cod_car)) 
+                                
+    elif op == 2: 
+        if len(alugados) == 0: 
+            print("Não há carros para devolver.")
+        else: 
+            print("Segue a lista de carros alugados. Qual você deseja devolver?")
+            mostrar_lista_de_carros(alugados)
+            print("")
+            print("Escolha o código do carro que deseja devolver:")
+            cod = int(input())
+            if conf == 0:
+                print("Obrigado por devolver o carro {} por {} dias.".format(alugados[cod][0], dias))
+                carros.append(alugados.pop(cod))
 
     print("") 
     print("=========")
